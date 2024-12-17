@@ -1,0 +1,177 @@
+﻿<?xml version="1.0"?>
+<SyntaxDefinition name="GEE_GXX_LFMLEngine" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+  <!--设置颜色与文本风格，如粗体，背景色等-->
+  <Color name="Comment" foreground="#C6B1B1" exampleText="注释"/>
+  <Color name="Card" fontWeight="bold" foreground="#c87c19" exampleText="开头和结尾包含的内容"/>
+  <Color name="Field" fontWeight="bold" foreground="#008000" exampleText="字段"/>
+  <Color name="string" fontWeight="bold" foreground="#204d74"  exampleText="字符串"/>
+  <Color name="GotoKeywords" foreground="#c9302c" exampleText="跳转语句关键词"/>
+  <Color name="SemanticKeywords" fontWeight="bold" foreground="DarkCyan" exampleText="if (args == null) throw new ArgumentNullException(nameof(args));" />
+
+  <!-- 主要的规则集 -->
+  <RuleSet>
+    <!--以//开头或者包裹在/*..*/中的文本使用Comment颜色-->
+    <Span color="Comment" begin=";" />
+    <!--<Span color="Comment" begin="//" />
+    <Span color="Comment" multiline="true" begin="/\*" end="\*/" />-->
+    
+    <!--Card着色开始-->
+    <Span color="Card">
+      <Begin>\[|\(\@\@</Begin>
+      <End>\]|\)</End>
+      <RuleSet>
+        <Span begin="@"/>
+      </RuleSet>
+    </Span>
+    <!--Card着色结束-->
+    
+    <!--string着色开始-->
+    <Span color="string">
+      <Begin>"</Begin>
+      <End>"</End>
+      <!--可以定义规则子集-->
+      <RuleSet>
+        <Span begin="\\" end="." />
+      </RuleSet>
+    </Span>
+
+    <Span color="string" begin="\&lt;\$" end="\&gt;"/>
+    <!--string着色结束-->
+    
+    <!--定义关键词-->
+    <Keywords fontWeight="bold" foreground="Blue">
+      <Word>#IF</Word>
+      <Word>#ACT</Word>
+      <Word>#act</Word>
+      <Word>#Act</Word>
+      <Word>#ELSEACT</Word>
+      <Word>#CALL</Word>
+      <Word>#ELSEACT</Word>
+      <Word>#SAY</Word>
+      <Word>#OR</Word>
+
+      <Word>%M</Word>
+      <Word>%X</Word>
+      <Word>%Y</Word>
+      
+      
+      <!-- ... -->
+    </Keywords>
+
+    <Keywords color="GotoKeywords">
+      <Word>BREAK</Word>
+      <Word>GOTO</Word>
+
+    </Keywords>
+
+    <Keywords color="SemanticKeywords">
+      <Word>SENDMSG</Word>
+      <Word>MESSAGEBOX</Word>
+      <Word>NOT</Word>
+      <Word>VAR</Word>
+      <Word>INC</Word>
+      <Word>INTEGER</Word>
+      <Word>DEC</Word>
+      <Word>SMALL</Word>
+      <Word>MUL</Word>
+      <Word>DIV</Word>
+      <Word>RANDOM</Word>
+      <Word>CALCVAR</Word>
+      <Word>SAVEVAR</Word>
+      <Word>SETICON</Word>
+    </Keywords>
+
+    <Keywords color="Field">
+      <Word>CHECKMAPHUMANCOUNT</Word>
+      <Word>!COMPVAL</Word>
+      <Word>COMPVAL</Word>
+      <Word>INTS</Word>
+      <Word>MOV</Word>
+      <Word>GAMEGOLD</Word>
+      <Word>CLOSE</Word>
+      <Word>GIVE</Word>
+      <Word>CHECKGAMEGOLD</Word>
+      <Word>TAKE</Word>
+      <Word>CALCVAL</Word>
+      <Word>DELAYGOTO</Word>
+      <Word>EQUAL</Word>
+      <Word>QUERYVALUE</Word>
+      <Word>CHECKJOB</Word>
+      <Word>CHECKLEVELEX</Word>
+      <Word>ISDUMMY</Word>
+      <Word>GMEXECUTE</Word>
+      <Word>MAP</Word>
+      <Word>MAPMOVE</Word>
+      <Word>SET</Word>
+      <Word>STARTAUTOPLAYGAME</Word>
+      <Word>CHECK</Word>
+      <Word>CHECKHPPER</Word>
+      <Word>HUMANHP</Word>
+      <Word>HUMANMP</Word>
+      <Word>LARGE</Word>
+      <Word>LARGE</Word>
+      <Word>CHANGELEVEL</Word>
+      <Word>SENDCENTERMSG</Word>
+      <Word>GUILDNOTICEMSG</Word>
+      <Word>CHECKITEM</Word>
+      <Word>GAMEDIAMOND</Word>
+      <Word>CHECKITEM</Word>
+      <Word>CHECKMAPNAME</Word>
+      <Word>CHECKGAMEGLORY</Word>
+      <Word>ISONMAP</Word>
+      <Word>CLEARNAMELIST</Word>
+      <Word>CHECKTEXTLIST</Word>
+      <Word>FORCEDIRECTORIES</Word>
+      <Word>CREATEFILE</Word>
+      <Word>ADDTEXTLISTEX</Word>
+      <Word>STARTELF</Word>
+      <Word>STARTPICKUP</Word>
+      <Word>LOADVAR</Word>
+      <Word>CHANGESPEED</Word>
+      <Word>CHANGEMODEEX</Word>
+      <Word>ADDBUTTON</Word>
+      <Word>SETONTIMER</Word>
+      <Word>CHECKGAMEPOINT</Word>
+      <Word>SETOFFTIMER</Word>
+      <Word>HAVEGUILD</Word>
+      <Word>ADDSKILL</Word>
+      <Word>DELSKILL</Word>
+      <Word>CHECKITEMW</Word>
+      <Word>MONGENEX</Word>
+      <Word>MOVEMONSTERS</Word>
+      <Word>CHECKTAKEOFFITEM</Word>
+      <Word>CHECKCURRTARGETRACE</Word>
+      <Word>SENDMOVEMSG</Word>
+      <Word>CHECKKILLMONNAME</Word>
+      <Word>STOPAUTOPLAYGAME</Word>
+      <Word>CLOSEBIGDIALOGBOX</Word>
+      <Word>MOVR</Word>
+      <Word>RELEASESHUTUP</Word>
+      <Word>HUMAN</Word>
+      <Word>GAMEPOINT</Word>
+      <Word>CHECKOFGUILD</Word>
+      <Word>SCREENEFFECT</Word>
+      <Word>PLAYSOUND</Word>
+      <Word>CHECKHUMINRANGE</Word>
+      <Word>GETRANDOMTEXT</Word>
+      <Word>CLEARMAPMON</Word>
+      <Word>GETRANDOMLINETEXT</Word>
+      <Word>CHECKMYSHOP</Word>
+      <Word>CHECKSHOPNAME</Word>
+      <Word>CHECKLEVEL</Word>
+      <Word>ISDUPMODE</Word>
+      <Word>CHECKSHOPSTALLSTATUS</Word>
+      <Word>SHOPSTALL</Word>
+
+    </Keywords>
+    <!-- 可以使用正则进行定义 -->
+    <Rule foreground="DarkBlue">
+      \b0[xX][0-9a-fA-F]+  # hex number
+      |    \b
+      (    \d+(\.[0-9]+)?   #number with optional floating point
+      |    \.[0-9]+         #or just starting with floating point
+      )
+      ([eE][+-]?[0-9]+)? # optional exponent
+    </Rule>
+  </RuleSet>
+</SyntaxDefinition>

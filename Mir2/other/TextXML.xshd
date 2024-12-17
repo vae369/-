@@ -1,0 +1,61 @@
+﻿<?xml version="1.0"?>
+<SyntaxDefinition name="BlueEngine" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+  <!--设置颜色与文本风格，如粗体，背景色等-->
+  <Color name="Comment" foreground="#C6B1B1" exampleText="注释"/>
+  <Color name="Card" fontWeight="bold" foreground="#960092" exampleText="开头和结尾包含的内容"/>
+  <Color name="Field" fontWeight="bold" foreground="#3A76D7" exampleText="字段"/>
+  <Color name="string" fontWeight="bold" foreground="#3A76D7"  exampleText="字符串"/>
+  <Color name="GotoKeywords" foreground="#0863a2" exampleText="跳转语句关键词"/>
+  <Color name="SemanticKeywords" fontWeight="bold" foreground="DarkCyan" exampleText="if (args == null) throw new ArgumentNullException(nameof(args));" />
+
+  <!-- 主要的规则集 -->
+  <RuleSet>
+    <!--以//开头或者包裹在/*..*/中的文本使用Comment颜色-->
+    <Span color="Comment" begin=";" />
+    <!--<Span color="Comment" begin="//" />
+    <Span color="Comment" multiline="true" begin="/\*" end="\*/" />-->
+    
+    <!--Card着色开始-->
+    <!--<Span color="Card">
+      <Begin>\[|\(\@\@</Begin>
+      <End>\]|\)</End>
+      <RuleSet>
+        <Span begin="@"/>
+      </RuleSet>
+    </Span>-->
+    <!--Card着色结束-->
+    
+    <!--string着色开始-->
+    <!--<Span color="string">
+      <Begin>"</Begin>
+      <End>"</End>
+      --><!--可以定义规则子集--><!--
+      <RuleSet>
+        <Span begin="\\" end="." />
+      </RuleSet>
+    </Span>
+
+    <Span color="string" begin="\&lt;\$" end="\&gt;"/>-->
+    <!--string着色结束-->
+    
+    <!--定义关键词-->
+    <Keywords fontWeight="bold" foreground="green">
+      <Word>#CHILD</Word>
+      <Word>RANDOM</Word>
+      <Word>(</Word>
+      <Word>)</Word>
+    </Keywords>
+     
+    <!-- 可以使用正则进行定义 -->
+    <Rule foreground="blue">      
+      \b0[xX][0-9a-fA-F]+  # hex number
+      |    \b
+      (    \d+(\.[0-9]+)?   #number with optional floating point
+      |    \.[0-9]+         #or just starting with floating point
+      )
+      ([eE][+-]?[0-9]+)? # optional exponent
+      |
+      /
+    </Rule>
+  </RuleSet>
+</SyntaxDefinition>
